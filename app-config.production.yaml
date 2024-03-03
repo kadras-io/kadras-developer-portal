@@ -8,7 +8,8 @@ backend:
   baseUrl: ${BACKSTAGE_BASE_URL}
   cors:
     origin: ${BACKSTAGE_BASE_URL}
-  listen: ':7007'
+  listen:
+    port: 7007
 
 auth:
   autologout:
