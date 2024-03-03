@@ -1,0 +1,24 @@
+app:
+  baseUrl: ${BACKSTAGE_BASE_URL}
+
+backend:
+  auth:
+    keys:
+      - secret: ${BACKSTAGE_BACKEND_SECRET}
+  baseUrl: ${BACKSTAGE_BASE_URL}
+  cors:
+    origin: ${BACKSTAGE_BASE_URL}
+  listen: ':7007'
+
+auth:
+  autologout:
+    enabled: true
+  environment: production
+  providers:
+    github:
+      production:
+        clientId: ${GITHUB_AUTH_PROVIDER_CLIENT_ID}
+        clientSecret: ${GITHUB_AUTH_PROVIDER_CLIENT_SECRET}
+
+catalog:
+  locations: []
