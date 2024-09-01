@@ -3,6 +3,6 @@ dist-types
 coverage
 .vscode
 .github
-docker-compose.yml
+compose.yml
 CODE_OF_CONDUCT.md
 MAINTAINERS.md
