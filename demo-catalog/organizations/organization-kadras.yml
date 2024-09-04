@@ -1,0 +1,32 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: kadras
+  title: Kadras
+  description: Researching technology to power your path from idea to production on Kubernetes
+  links:
+    - url: https://www.kadras.io
+      title: Website
+    - url: https://github.com/kadras-io
+      title: GitHub
+      icon: github
+spec:
+  type: organization
+  profile:
+    displayName: Kadras
+    picture: https://avatars.githubusercontent.com/u/122495299?s=400&u=b7253f864937e362b42c0b390da51ea9492194f4&v=4
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: ThomasVitale
+  title: Thomas Vitale
+spec:
+  memberOf: [kadras]
+  profile:
+    displayName: Thomas Vitale
+    email: ThomasVitale@users.noreply.github.com
+    picture: https://avatars.githubusercontent.com/u/8523418?s=400&u=0ff9935d7aef1e1a735c661da9703c85513320ca&v=4

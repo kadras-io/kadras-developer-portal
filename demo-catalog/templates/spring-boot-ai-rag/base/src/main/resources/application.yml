@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: ${{ values.artifactId }}
+  ai:
+    chat:
+      observations:
+        include-completion: true
+        include-prompt: true
+    image:
+      observations:
+        include-prompt: true
+    {%- if values.llmProvider == "mistral-ai" %}
+    mistralai:
+      chat:
+        options:
+          model: mistral-small-latest
+          temperature: 0.7
+      embedding:
+        options:
+          model: mistral-embed
+    {%- endif %}
+    {%- if values.llmProvider == "ollama" %}
+    ollama:
+      chat:
+        options:
+          model: mistral
+          num-ctx: 4096
+          temperature: 0.7
+      embedding:
+        options:
+          model: nomic-embed-text
+    {%- endif %}
+    {%- if values.llmProvider == "openai" %}
+    openai:
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0.7
+      embedding:
+        options:
+          model: text-embedding-3-small
+      image:
+        options:
+          model: dall-e-3
+    {%- endif %}
+    vectorstore:
+      {%- if values.vectorStore == "postgresql" %}
+      pgvector:
+        {%- if values.llmProvider == "ollama" %}
+        dimensions: 768
+        {%- endif %}
+        index-type: hnsw
+        initialize-schema: true
+      {%- endif %}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      service.name: ${spring.application.name}
+  tracing:
+    sampling:
+      probability: 1.0
