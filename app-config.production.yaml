@@ -1,25 +1,35 @@
 app:
+  # Should be the same as backend.baseUrl when using the `app-backend` plugin.
   baseUrl: ${BACKSTAGE_BASE_URL}
 
 backend:
-  auth:
-    keys:
-      - secret: ${BACKSTAGE_BACKEND_SECRET}
+  # Note that the baseUrl should be the URL that the browser and other clients
+  # should use when communicating with the backend, i.e. it needs to be
+  # reachable not just from within the backend host, but from all of your
+  # callers. When its value is "http://localhost:7007", it's strictly private
+  # and can't be reached by others.
   baseUrl: ${BACKSTAGE_BASE_URL}
   cors:
     origin: ${BACKSTAGE_BASE_URL}
+  # The listener can also be expressed as a single <host>:<port> string. In this case we bind to
+  # all interfaces, the most permissive setting. The right value depends on your specific deployment.
+  # listen: ':7007'
   listen:
     port: 7007
 
 auth:
-  autologout:
-    enabled: true
   environment: production
   providers:
+    # See https://backstage.io/docs/auth/github/provider
     github:
       production:
-        clientId: ${GITHUB_AUTH_PROVIDER_CLIENT_ID}
-        clientSecret: ${GITHUB_AUTH_PROVIDER_CLIENT_SECRET}
+        clientId: ${AUTH_GITHUB_CLIENT_ID}
+        clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
+        ## uncomment if using GitHub Enterprise
+        # enterpriseInstanceUrl: ${AUTH_GITHUB_ENTERPRISE_INSTANCE_URL}
+        signIn:
+          resolvers:
+            - resolver: usernameMatchingUserEntityName
 
 catalog:
   locations: []
