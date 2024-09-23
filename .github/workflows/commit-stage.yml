@@ -25,7 +25,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
       
       - name: Validate configuration
         run: |
@@ -76,7 +76,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
       
       - name: Generate type definitions
         run: |
