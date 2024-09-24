@@ -57,6 +57,10 @@ proxy:
   #     target: 'https://example.com'
   #     changeOrigin: true
 
+sonarqube:
+  baseUrl: https://sonarcloud.io
+  apiKey: ${SONARCLOUD_TOKEN}
+
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
 # and an external cloud storage when deploying TechDocs for production use-case.
@@ -160,7 +164,3 @@ search:
       highlightAll: false # If true the whole document will be used as the headline, ignoring the preceding three parameters. The default is false.
       maxFragments: 0 # Maximum number of text fragments to display. The default value of zero selects a non-fragment-based headline generation method. A value greater than zero selects fragment-based headline generation (see the linked documentation above for more details).
       fragmentDelimiter: ' ... ' # Delimiter string used to concatenate fragments. Defaults to " ... ".
-
-sonarqube:
-  baseUrl: https://sonarcloud.io
-  apiKey: ${SONARCLOUD_TOKEN}
