@@ -50,6 +50,8 @@ backend.add(import('@backstage/plugin-kubernetes-backend/alpha'));
 
 // other plugins
 backend.add(import('@backstage-community/plugin-sonarqube-backend'));
-backend.add(import('@roadiehq/scaffolder-backend-module-http-request/new-backend'));
+backend.add(
+  import('@roadiehq/scaffolder-backend-module-http-request/new-backend'),
+);
 
 backend.start();
