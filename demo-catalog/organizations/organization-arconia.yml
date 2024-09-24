@@ -1,0 +1,19 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: arconia
+  title: Arconia
+  description: Frameworks, libraries, and tools for building cloud native software systems in Java.
+  links:
+    - url: https://www.arconia.io
+      title: Website
+    - url: https://github.com/arconia-io
+      title: GitHub
+      icon: github
+spec:
+  type: organization
+  profile:
+    displayName: Arconia
+    picture: https://avatars.githubusercontent.com/u/151681568?s=400&u=17a791138dc43b253b67e9c71de45caa60fa10df&v=4
+  children: []
