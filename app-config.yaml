@@ -129,8 +129,26 @@ kubernetes:
   serviceLocatorMethod:
     type: 'multiTenant'
   clusterLocatorMethods:
-    - type: 'config'
-      clusters: []
+    - type: 'localKubectlProxy'
+    # - type: 'config'
+    #   clusters:
+    #     - url: https://127.0.0.1:63331
+    #       name: kind
+    #       title: Local Kubernetes Cluster
+    #       authProvider: 'serviceAccount'
+    #       serviceAccountToken: ${K8S_SERVICE_ACCOUNT_TOKEN}
+    #       skipTLSVerify: true
+    #       skipMetricsLookup: false
+    #       caData: ${K8S_CONFIG_CA_DATA}
+    #       caFile: '' # local path to CA file
+    #       customResources:
+    #         - group: 'argoproj.io'
+    #           apiVersion: 'v1alpha1'
+    #           plural: 'rollouts'
+  customResources:
+    - group: 'serving.knative.dev'
+      apiVersion: 'v1'
+      plural: 'services'
 
 # see https://backstage.io/docs/permissions/getting-started for more on the permission framework
 permission:
