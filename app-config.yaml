@@ -110,13 +110,9 @@ catalog:
   locations:
     # Users and Groups
     - type: file
-      target: ../../demo-catalog/organizations/organization-kadras.yml
+      target: ../../demo-catalog/organizations/organizations.yml
       rules:
         - allow: [Group, Location, User]
-    - type: file
-      target: ../../demo-catalog/organizations/organization-guest.yml
-      rules:
-        - allow: [Group, User]
 
     # Templates
     - type: file
@@ -164,3 +160,7 @@ search:
       highlightAll: false # If true the whole document will be used as the headline, ignoring the preceding three parameters. The default is false.
       maxFragments: 0 # Maximum number of text fragments to display. The default value of zero selects a non-fragment-based headline generation method. A value greater than zero selects fragment-based headline generation (see the linked documentation above for more details).
       fragmentDelimiter: ' ... ' # Delimiter string used to concatenate fragments. Defaults to " ... ".
+
+sonarqube:
+  baseUrl: https://sonarcloud.io
+  apiKey: ${SONARCLOUD_TOKEN}

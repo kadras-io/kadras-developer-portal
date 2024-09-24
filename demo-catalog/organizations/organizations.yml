@@ -1,0 +1,11 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: organizations
+  description: A collection of Organizations and Users
+spec:
+  targets:
+    - ./organization-arconia.yml
+    - ./organization-kadras.yml
+    - ./users.yml
