@@ -9,10 +9,10 @@ metadata:
   tags:
     - recommended
     - java
-    - spring
+    - spring-boot
     - ai
 spec:
-  owner: kadras
+  owner: arconia
   type: service
 
   parameters:
@@ -97,10 +97,12 @@ spec:
           ui:autofocus: true
           default: mistral-ai
           enum:
+            - anthropic
             - mistral-ai
             - ollama
             - openai
           enumNames:
+            - "Anthropic"
             - "Mistral AI"
             - "Ollama"
             - "OpenAI"
@@ -144,6 +146,7 @@ spec:
         values:
           name: ${{ parameters.name }}
           description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
           repoUrl: ${{ parameters.repoUrl | parseRepoUrl }}
           groupId: ${{ parameters.groupId }}
           artifactId: ${{ parameters.artifactId }}
@@ -151,19 +154,6 @@ spec:
           basePackageDir: ${{ parameters.basePackage | replace(".", "/") }}
           llmProvider: ${{ parameters.llmProvider }}
           vectorStore: ${{ parameters.vectorStore }}
-    
-    - id: fetch-catalog-info
-      name: Fetch Catalog Info
-      action: fetch:template
-      input:
-        url: ./catalog-info/
-        values:
-          name: ${{ parameters.name }}
-          description: ${{ parameters.description }}
-          owner: ${{ parameters.owner }}
-          repoUrl: ${{ parameters.repoUrl | parseRepoUrl }}
-          applicationType: service
-          lifecycle: experimental
 
     - id: publish
       name: Publish Application Repository
@@ -202,4 +192,5 @@ spec:
     - title: Getting Started
       content: |
         1. `git clone ${{ steps['publish'].output.remoteUrl }}`
-        2. `./gradlew bootTestRun`
+        2. `cd ${{ (parameters.repoUrl | parseRepoUrl).repo }}`
+        3. `./gradlew bootTestRun`
