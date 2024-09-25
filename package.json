@@ -55,5 +55,8 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@4.4.1"
+  "packageManager": "yarn@4.4.1",
+  "dependencies": {
+    "@roadiehq/backstage-plugin-security-insights": "^2.3.20"
+  }
 }

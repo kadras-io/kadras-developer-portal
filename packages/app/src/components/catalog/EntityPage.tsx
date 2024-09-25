@@ -58,6 +58,8 @@ import {
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { EntitySonarQubeCard } from '@backstage-community/plugin-sonarqube';
+import { EntityGithubInsightsContent } from '@roadiehq/backstage-plugin-github-insights';
+import { EntitySecurityInsightsContent } from '@roadiehq/backstage-plugin-security-insights';
 
 import {
   EntityKubernetesContent,
@@ -159,7 +161,6 @@ const overviewContent = (
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
-    
   </Grid>
 );
 
@@ -205,6 +206,14 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/code-insights" title="Code Insights">
+      <EntityGithubInsightsContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/security-insights" title="Security Insights">
+      <EntitySecurityInsightsContent />
     </EntityLayout.Route>
   </EntityLayout>
 );
