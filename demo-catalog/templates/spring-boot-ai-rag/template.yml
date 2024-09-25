@@ -161,11 +161,19 @@ spec:
       input:
         repoUrl: ${{ parameters.repoUrl }}
         allowedHosts: ['github.com']
+        allowRebaseMerge: false
+        allowSquashMerge: false
         defaultBranch: ${{ parameters.repoBranch }}
+        deleteBranchOnMerge: true
         description: ${{ parameters.description }}
+        dismissStaleReviews: true
         gitAuthorName: ${{ user.entity.spec.profile.displayName }}
         gitAuthorEmail: ${{ user.entity.spec.profile.email }}
-        repoVisibility: private
+        gitCommitMessage: "Initial commit"
+        repoVisibility: public
+        requireBranchesToBeUpToDate: true
+        requiredCommitSigning: true
+        requiredConversationResolution: true
         topics:
           - java
           - spring-boot
