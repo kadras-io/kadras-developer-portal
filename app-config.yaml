@@ -52,8 +52,8 @@ integrations:
 proxy:
   '/sonarqube':
     target: https://sonarcloud.io/api
-    allowedMethods: [ 'GET', 'POST' ]
-    auth: "${SONARCLOUD_TOKEN}:"
+    allowedMethods: ['GET', 'POST']
+    auth: '${SONARCLOUD_TOKEN}:'
 
 sonarqube:
   baseUrl: https://sonarcloud.io
