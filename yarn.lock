@@ -5811,6 +5811,44 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@dweber019/backstage-plugin-endoflife@npm:^0.0.14":
+  version: 0.0.14
+  resolution: "@dweber019/backstage-plugin-endoflife@npm:0.0.14"
+  dependencies:
+    "@backstage/catalog-model": "npm:^1.6.0"
+    "@backstage/core-components": "npm:^0.14.10"
+    "@backstage/core-plugin-api": "npm:^1.9.3"
+    "@backstage/errors": "npm:^1.2.4"
+    "@backstage/integration-react": "npm:^1.1.30"
+    "@backstage/plugin-catalog-react": "npm:^1.12.3"
+    "@egjs/hammerjs": "npm:^2.0.17"
+    "@material-ui/core": "npm:^4.12.2"
+    "@material-ui/icons": "npm:^4.9.1"
+    keycharm: "npm:^0.4.0"
+    luxon: "npm:^3.4.4"
+    moment: "npm:^2.30.1"
+    react-use: "npm:^17.2.4"
+    vis-data: "npm:^7.1.9"
+    vis-timeline: "npm:^7.7.3"
+    vis-util: "npm:^5.0.7"
+    xss: "npm:^1.0.15"
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
+    react-router-dom: 6.0.0-beta.0 || ^6.3.0
+  checksum: 10c0/d50fe5ef8f5c1ada1893c519e4b7e64ebbcb2a1a5721cf1f96c9e71c5f28694f46b42a6bd6ef1e0d340b9c3766672aafa226bccaf2ef450d8f8a5e591c3bcf9f
+  languageName: node
+  linkType: hard
+
+"@egjs/hammerjs@npm:^2.0.17":
+  version: 2.0.17
+  resolution: "@egjs/hammerjs@npm:2.0.17"
+  dependencies:
+    "@types/hammerjs": "npm:^2.0.36"
+  checksum: 10c0/dbedc15a0e633f887c08394bd636faf6a3abd05726dc0909a0e01209d5860a752d9eca5e512da623aecfabe665f49f1d035de3103eb2f9022c5cea692f9cc9be
+  languageName: node
+  linkType: hard
+
 "@emotion/babel-plugin@npm:^11.12.0":
   version: 11.12.0
   resolution: "@emotion/babel-plugin@npm:11.12.0"
@@ -12106,6 +12144,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/hammerjs@npm:^2.0.36":
+  version: 2.0.45
+  resolution: "@types/hammerjs@npm:2.0.45"
+  checksum: 10c0/1f01e3d0260e3cb824fd0ae32c9a8e1b3727e53ef31682612a0a282c4a84bb758dd30b04749b2ae91e621443c80bfe541b38e91e33308f9dea5d9ac92bd0e854
+  languageName: node
+  linkType: hard
+
 "@types/hast@npm:^2.0.0":
   version: 2.3.10
   resolution: "@types/hast@npm:2.3.10"
@@ -13574,6 +13619,7 @@ __metadata:
     "@backstage/plugin-user-settings": "npm:^0.8.12"
     "@backstage/test-utils": "npm:^1.6.0"
     "@backstage/theme": "npm:^0.5.7"
+    "@dweber019/backstage-plugin-endoflife": "npm:^0.0.14"
     "@material-ui/core": "npm:^4.12.2"
     "@material-ui/icons": "npm:^4.9.1"
     "@playwright/test": "npm:^1.32.3"
@@ -15362,7 +15408,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^2.19.0, commander@npm:^2.20.0":
+"commander@npm:^2.19.0, commander@npm:^2.20.0, commander@npm:^2.20.3":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
   checksum: 10c0/74c781a5248c2402a0a3e966a0a2bba3c054aad144f5c023364be83265e796b20565aa9feff624132ff629aa64e16999fa40a743c10c12f7c61e96a794b99288
@@ -16048,6 +16094,13 @@ __metadata:
   bin:
     cssesc: bin/cssesc
   checksum: 10c0/6bcfd898662671be15ae7827120472c5667afb3d7429f1f917737f3bf84c4176003228131b643ae74543f17a394446247df090c597bb9a728cce298606ed0aa7
+  languageName: node
+  linkType: hard
+
+"cssfilter@npm:0.0.10":
+  version: 0.0.10
+  resolution: "cssfilter@npm:0.0.10"
+  checksum: 10c0/478a227a616fb6e9bb338eb95f690df141b86231ec737cbea574484f31a09a51db894b4921afc4987459dae08d584355fd689ff2a7a7c7a74de4bb4c072ce553
   languageName: node
   linkType: hard
 
@@ -22124,6 +22177,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"keycharm@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "keycharm@npm:0.4.0"
+  checksum: 10c0/5e845331148b5cb652f65a6354a830df62a189e2c17faec56375fa12d91152a70f93c872c6f22b81acafe56b9df51268c9af6b7b8c0543cb65ba46042eb9713e
+  languageName: node
+  linkType: hard
+
 "keygrip@npm:~1.1.0":
   version: 1.1.0
   resolution: "keygrip@npm:1.1.0"
@@ -22785,7 +22845,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"luxon@npm:^3.0.0, luxon@npm:^3.2.1, luxon@npm:^3.4.3":
+"luxon@npm:^3.0.0, luxon@npm:^3.2.1, luxon@npm:^3.4.3, luxon@npm:^3.4.4":
   version: 3.5.0
   resolution: "luxon@npm:3.5.0"
   checksum: 10c0/335789bba95077db831ef99894edadeb23023b3eb2137a1b56acd0d290082b691cf793143d69e30bc069ec95f0b49f36419f48e951c68014f19ffe12045e3494
@@ -23860,6 +23920,13 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 10c0/46ea0f3ffa8bc6a5bc0c7081ffc3907777f0ed6516888d40a518c5111f8366d97d2678911ad1a6882bf592fa9de6c784fea32e1687bb94e1f4944170af48a5cf
+  languageName: node
+  linkType: hard
+
+"moment@npm:^2.30.1":
+  version: 2.30.1
+  resolution: "moment@npm:2.30.1"
+  checksum: 10c0/865e4279418c6de666fca7786607705fd0189d8a7b7624e2e56be99290ac846f90878a6f602e34b4e0455c549b85385b1baf9966845962b313699e7cb847543a
   languageName: node
   linkType: hard
 
@@ -30752,6 +30819,43 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vis-data@npm:^7.1.9":
+  version: 7.1.9
+  resolution: "vis-data@npm:7.1.9"
+  peerDependencies:
+    uuid: ^3.4.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
+    vis-util: ^5.0.1
+  checksum: 10c0/2fce50e41862133e4fcdc92d216755b544936288a8586fc2f0afdc8b586ee75acb029e3fa9bbbb48a91e4c35ebc375bdba213e836926564f899ad80e0981d304
+  languageName: node
+  linkType: hard
+
+"vis-timeline@npm:^7.7.3":
+  version: 7.7.3
+  resolution: "vis-timeline@npm:7.7.3"
+  peerDependencies:
+    "@egjs/hammerjs": ^2.0.0
+    component-emitter: ^1.3.0
+    keycharm: ^0.2.0 || ^0.3.0 || ^0.4.0
+    moment: ^2.24.0
+    propagating-hammerjs: ^1.4.0 || ^2.0.0
+    uuid: ^3.4.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
+    vis-data: ^6.3.0 || ^7.0.0
+    vis-util: ^5.0.1
+    xss: ^1.0.0
+  checksum: 10c0/82f5bdcc815e60e04562a071ef374d2e0d1d9387482faf8629471ce0de98ed75a593565af3b4db36d8c977d085b96b88afc51a967eb6f1f81031a3822d7f039d
+  languageName: node
+  linkType: hard
+
+"vis-util@npm:^5.0.7":
+  version: 5.0.7
+  resolution: "vis-util@npm:5.0.7"
+  peerDependencies:
+    "@egjs/hammerjs": ^2.0.0
+    component-emitter: ^1.3.0 || ^2.0.0
+  checksum: 10c0/8e460327b063335ade3a0ef9902c9fb93111036efcd13715513f075cd8972155388e84ccf1987ba8d947d671b257fb109d0cccbf0e18f061f0a303c9a46d0d92
+  languageName: node
+  linkType: hard
+
 "vm-browserify@npm:^1.0.1":
   version: 1.1.2
   resolution: "vm-browserify@npm:1.1.2"
@@ -31422,6 +31526,18 @@ __metadata:
   version: 0.0.34
   resolution: "xpath@npm:0.0.34"
   checksum: 10c0/88335108884ca164421f7fed048ef1a18ab3f7b1ae446b627fd3f51fc2396dcce798601c5e426de3bbd55d5940b84cf2326c75cd76620c1b49491283b85de17a
+  languageName: node
+  linkType: hard
+
+"xss@npm:^1.0.15":
+  version: 1.0.15
+  resolution: "xss@npm:1.0.15"
+  dependencies:
+    commander: "npm:^2.20.3"
+    cssfilter: "npm:0.0.10"
+  bin:
+    xss: bin/xss
+  checksum: 10c0/9b31bee62a208f78e2b7bc8154e3ee87d980f4661dc4ab850ce6f4de7bc50eb152f0bdc13fa759ff8ab6d9bfdf8c0d79cf9f6f86249872b92181912309bccd08
   languageName: node
   linkType: hard
 
