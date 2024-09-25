@@ -53,11 +53,11 @@ proxy:
   '/sonarqube':
     target: https://sonarcloud.io/api
     allowedMethods: ['GET', 'POST']
-    auth: '${SONARCLOUD_TOKEN}:'
+    auth: '${SONAR_TOKEN}:'
 
 sonarqube:
   baseUrl: https://sonarcloud.io
-  apiKey: ${SONARCLOUD_TOKEN}
+  apiKey: ${SONAR_TOKEN}
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
