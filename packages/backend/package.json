@@ -43,16 +43,16 @@
     "@backstage/plugin-techdocs-backend": "^1.10.13",
     "@roadiehq/scaffolder-backend-module-http-request": "^4.3.4",
     "app": "link:../app",
-    "better-sqlite3": "^9.0.0",
-    "node-gyp": "^10.0.0",
-    "pg": "^8.12.0",
-    "winston": "^3.2.1"
+    "better-sqlite3": "^9.6.0",
+    "node-gyp": "^10.2.0",
+    "pg": "^8.13.0",
+    "winston": "^3.14.2"
   },
   "devDependencies": {
     "@backstage/cli": "^0.27.1",
-    "@types/express": "^4.17.6",
-    "@types/express-serve-static-core": "^4.17.5",
-    "@types/luxon": "^2.0.4"
+    "@types/express": "^4.17.21",
+    "@types/express-serve-static-core": "^4.19.6",
+    "@types/luxon": "^2.4.0"
   },
   "files": [
     "dist"
