@@ -180,6 +180,15 @@ spec:
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yml"
+    
+    - id: sonarcloud
+      name: Register project on SonarCloud
+      action: http:backstage:request
+      input:
+        method: 'POST'
+        path: '/proxy/sonarqube/projects/create?name=${{ (parameters.repoUrl | parseRepoUrl).repo }}&organization=${{ (parameters.repoUrl | parseRepoUrl).owner }}&project=${{ (parameters.repoUrl | parseRepoUrl).owner }}_${{ (parameters.repoUrl | parseRepoUrl).repo }}'
+        headers:
+          content-type: 'application/json'
 
   output:
     links:
