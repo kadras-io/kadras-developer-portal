@@ -21,9 +21,11 @@ spring:
     {%- endif %}
     {%- if values.llmProvider == "ollama" %}
     ollama:
+      init:
+        pull-model-strategy: when_missing
       chat:
         options:
-          model: mistral
+          model: llama3.2
           num-ctx: 4096
           temperature: 0.7
       embedding:
@@ -64,3 +66,8 @@ management:
   tracing:
     sampling:
       probability: 1.0
+  otlp:
+    logging:
+      endpoint: "http://localhost:4318/v1/logs"
+    tracing:
+      endpoint: "http://localhost:4318/v1/traces"

@@ -1,5 +1,7 @@
 package ${{ values.basePackage }};
 
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,9 +13,11 @@ import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.web.client.ClientHttpRequestFactories;
 import org.springframework.boot.web.client.ClientHttpRequestFactorySettings;
 import org.springframework.boot.web.client.RestClientCustomizer;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
@@ -32,10 +36,17 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	@Bean
+	ApplicationListener<ApplicationReadyEvent> logbackOtelAppenderInitializer(OpenTelemetry openTelemetry) {
+		return _ -> OpenTelemetryAppender.install(openTelemetry);
+	}
+
 }
 
 @RestController
 class ChatController {
+
+	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 
 	private final ChatClient chatClient;
 	private final VectorStore vectorStore;
@@ -47,6 +58,7 @@ class ChatController {
 
 	@PostMapping("/chat")
 	String chatWithDocument(@RequestBody String message) {
+		logger.info("Received user message: {}", message);
 		return chatClient.prompt()
 				.advisors(new QuestionAnswerAdvisor(vectorStore))
 				.user(message)

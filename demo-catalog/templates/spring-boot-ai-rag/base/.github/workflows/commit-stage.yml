@@ -35,14 +35,14 @@ jobs:
       security-events: write
     steps:
       - name: Check out source code
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
         with:
           fetch-depth: 0
       
       - name: Set up Java
         uses: actions/setup-java@b36c23c0d998641eff861008f374ee103c25ac73 # v4.4.0
         with:
-          java-version: 22
+          java-version: 23
           distribution: 'graalvm'
       
       - name: Setup Gradle
@@ -53,20 +53,17 @@ jobs:
         env:
           SONAR_TOKEN: ${{ '${{ secrets.SONAR_TOKEN }}' }}
       
-      - name: SBOM vulnerability scanning
-        uses: aquasecurity/trivy-action@97646fedde05bcd0961217c60b50e23f721e7ec7 # master
+      - name: Publish SBOM
+        uses: DependencyTrack/gh-upload-sbom@48feab3080ff9e8f51f4d21861d9fc914eb744f5 # v3.1.0
+        if: ${{ '${{ !contains(github.ref_name, '/') }}' }}
         with:
-          scan-type: 'sbom'
-          scan-ref: 'build/reports/application.cdx.json'
-          format: 'sarif'
-          output: 'trivy-results-build.sarif'
-
-      - name: Upload vulnerability report
-        uses: github/codeql-action/upload-sarif@461ef6c76dfe95d5c364de2f431ddbd31a417628 # v3.26.9
-        if: success() || failure()
-        with:
-          sarif_file: 'trivy-results-build.sarif'
-          category: build
+          serverHostname: ${{ '${{ secrets.DEPENDENCY_TRACK_HOSTNAME }}' }}
+          apiKey: ${{ '${{ secrets.DEPENDENCY_TRACK_API_KEY }}' }}
+          projectName: ${{ '${{ github.event.repository.name }}' }}
+          projectVersion: ${{ '${{ github.ref_name }}' }}
+          projectTags: 'java,spring-boot'
+          bomFilename: "build/reports/application.cdx.json"
+          autoCreate: true
 
       - name: Package as OCI image
         run: ./gradlew bootBuildImage --imageName ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:${{ '${{ env.VERSION }}' }}
