@@ -60,6 +60,7 @@ import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { EntitySonarQubeCard } from '@backstage-community/plugin-sonarqube';
 import { EntityGithubInsightsContent } from '@roadiehq/backstage-plugin-github-insights';
 import { EntitySecurityInsightsContent } from '@roadiehq/backstage-plugin-security-insights';
+import { isGithubWorkflowsAvailable, GithubWorkflowsContent } from '@veecode-platform/backstage-plugin-github-workflows'
 
 import {
   EntityKubernetesContent,
@@ -84,7 +85,8 @@ const cicdContent = (
   // You can for example enforce that all components of type 'service' should use GitHubActions
   <EntitySwitch>
     <EntitySwitch.Case if={isGithubActionsAvailable}>
-      <EntityGithubActionsContent />
+      {/* <EntityGithubActionsContent /> */}
+      <GithubWorkflowsContent/>
     </EntitySwitch.Case>
 
     <EntitySwitch.Case>
@@ -151,6 +153,14 @@ const overviewContent = (
       <EntitySwitch.Case if={isEndOfLifeAvailable}>
         <Grid item md={6}>
           <EntityEndOfLifeCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
+
+    <EntitySwitch>
+      <EntitySwitch.Case if={isGithubWorkflowsAvailable}>
+        <Grid item md={12} xs={12}>
+            <GithubWorkflowsContent cards />
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
