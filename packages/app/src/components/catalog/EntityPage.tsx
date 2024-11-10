@@ -28,9 +28,7 @@ import {
   hasRelationWarnings,
   EntityRelationWarning,
 } from '@backstage/plugin-catalog';
-import {
-  isGithubActionsAvailable,
-} from '@backstage-community/plugin-github-actions';
+import { isGithubActionsAvailable } from '@backstage-community/plugin-github-actions';
 import {
   EntityUserProfileCard,
   EntityGroupProfileCard,
@@ -59,7 +57,10 @@ import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { EntitySonarQubeCard } from '@backstage-community/plugin-sonarqube';
 import { EntityGithubInsightsContent } from '@roadiehq/backstage-plugin-github-insights';
 import { EntitySecurityInsightsContent } from '@roadiehq/backstage-plugin-security-insights';
-import { isGithubWorkflowsAvailable, GithubWorkflowsContent } from '@veecode-platform/backstage-plugin-github-workflows'
+import {
+  isGithubWorkflowsAvailable,
+  GithubWorkflowsContent,
+} from '@veecode-platform/backstage-plugin-github-workflows';
 
 import {
   EntityKubernetesContent,
@@ -85,7 +86,7 @@ const cicdContent = (
   <EntitySwitch>
     <EntitySwitch.Case if={isGithubActionsAvailable}>
       {/* <EntityGithubActionsContent /> */}
-      <GithubWorkflowsContent/>
+      <GithubWorkflowsContent />
     </EntitySwitch.Case>
 
     <EntitySwitch.Case>
@@ -159,7 +160,7 @@ const overviewContent = (
     <EntitySwitch>
       <EntitySwitch.Case if={isGithubWorkflowsAvailable}>
         <Grid item md={12} xs={12}>
-            <GithubWorkflowsContent cards />
+          <GithubWorkflowsContent cards />
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
