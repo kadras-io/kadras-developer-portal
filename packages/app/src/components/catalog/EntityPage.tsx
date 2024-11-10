@@ -30,7 +30,6 @@ import {
 } from '@backstage/plugin-catalog';
 import {
   isGithubActionsAvailable,
-  EntityGithubActionsContent,
 } from '@backstage-community/plugin-github-actions';
 import {
   EntityUserProfileCard,
