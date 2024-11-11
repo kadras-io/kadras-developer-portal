@@ -9,6 +9,7 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     endoflife.date/products: spring-boot
     github.com/project-slug: ${{ values.repoUrl.owner }}/${{ values.repoUrl.repo }}
+    github.com/workflows: commit-stage.yml
     sonarqube.org/project-key: ${{ values.repoUrl.owner }}_${{ values.repoUrl.repo }}
 spec:
   type: service
