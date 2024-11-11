@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: spring-ai-rag
-  title: Spring AI RAG
-  description: Spring Boot using Java and Gradle with Spring AI integration to build LLM-powered applications with RAG.
+  title: Spring AI Service
+  description: Spring Boot using Java and Gradle with Spring AI integration to build LLM-powered applications with RAG and tools.
   annotations:
     backstage.io/time-saved: PT12H
   tags:

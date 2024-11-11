@@ -1,6 +1,10 @@
 spring:
   application:
     name: ${{ values.artifactId }}
+  http:
+    client:
+      connect-timeout: 60s
+      read-timeout: 120s
   ai:
     chat:
       observations:
@@ -46,6 +50,8 @@ spring:
           model: dall-e-3
     {%- endif %}
     vectorstore:
+      observations:
+        include-query-response: true
       {%- if values.vectorStore == "postgresql" %}
       pgvector:
         {%- if values.llmProvider == "ollama" %}

@@ -6,4 +6,4 @@ metadata:
   description: A collection of Templates
 spec:
   targets:
-    - ./spring-boot-ai-rag/template.yml
+    - ./spring-boot-ai-service/template.yml
