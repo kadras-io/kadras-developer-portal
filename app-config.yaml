@@ -25,10 +25,10 @@ backend:
   database:
     client: pg
     connection:
-      host: ${POSTGRES_HOST}
-      port: ${POSTGRES_PORT}
-      user: ${POSTGRES_USER}
-      password: ${POSTGRES_PASSWORD}
+      host: 127.0.0.1
+      port: 5432
+      user: user
+      password: password
       # https://node-postgres.com/features/ssl
       # you can set the sslmode configuration option via the `PGSSLMODE` environment variable
       # see https://www.postgresql.org/docs/current/libpq-ssl.html Table 33.1. SSL Mode Descriptions (e.g. require)
@@ -116,13 +116,17 @@ catalog:
     - type: file
       target: ../../demo-catalog/organizations/organizations.yml
       rules:
-        - allow: [Group, Location, User]
+        - allow: [User, Group, Location]
 
     # Templates
     - type: file
       target: ../../demo-catalog/templates/templates.yml
       rules:
-        - allow: [Location, Template]
+        - allow: [Template, Location]
+
+  # Experimental: Always use the search method in UrlReaderProcessor.
+  # New adopters are encouraged to enable it as this behavior will be the default in a future release.
+  useUrlReadersSearch: true
 
 # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
 kubernetes:

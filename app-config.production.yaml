@@ -11,6 +11,13 @@ backend:
   baseUrl: ${BACKSTAGE_BASE_URL}
   cors:
     origin: ${BACKSTAGE_BASE_URL}
+  database:
+    client: pg
+    connection:
+      host: ${POSTGRES_HOST}
+      port: ${POSTGRES_PORT}
+      user: ${POSTGRES_USER}
+      password: ${POSTGRES_PASSWORD}
   # The listener can also be expressed as a single <host>:<port> string. In this case we bind to
   # all interfaces, the most permissive setting. The right value depends on your specific deployment.
   # listen: ':7007'
