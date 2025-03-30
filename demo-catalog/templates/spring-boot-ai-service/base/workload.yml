@@ -14,15 +14,9 @@ spec:
     {%- if values.llmProvider == "mistral" %}
     - name: mistral-ai
     {%- endif %}
-    {%- if values.llmProvider == "openai" %}
-    - name: open-ai
-    {%- endif %}
-    {%- if values.vectorStore == "chroma" %}
-    - name: chroma
+    {%- if values.llmProvider == "ollama" %}
+    - name: ollama
     {%- endif %}
     {%- if values.vectorStore == "postgresql" %}
     - name: postgresql
-    {%- endif %}
-    {%- if values.vectorStore == "weaviate" %}
-    - name: weaviate
     {%- endif %}

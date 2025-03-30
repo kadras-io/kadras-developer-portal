@@ -11,6 +11,9 @@ metadata:
     - url: https://github.com/kadras-io
       title: GitHub
       icon: github
+    - url: https://bsky.app/profile/kadras.io
+      title: Bluesky
+      icon: bluesky
 spec:
   type: organization
   profile:

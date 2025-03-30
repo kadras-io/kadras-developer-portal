@@ -10,7 +10,7 @@ ${{ values.description }}
 ## 🚀&nbsp; Running the application
 
 ```shell
-./gradlew bootTestRun
+./gradlew bootRun
 ```
 
 ## 💻&nbsp; Calling the application

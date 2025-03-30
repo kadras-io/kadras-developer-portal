@@ -11,6 +11,9 @@ metadata:
     - url: https://github.com/arconia-io
       title: GitHub
       icon: github
+    - url: https://bsky.app/profile/arconia.io
+      title: Bluesky
+      icon: bluesky
 spec:
   type: organization
   profile:

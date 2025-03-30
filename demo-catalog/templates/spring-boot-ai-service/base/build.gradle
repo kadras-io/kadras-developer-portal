@@ -1,9 +1,9 @@
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.0-RC1'
-	id 'io.spring.dependency-management' version '1.1.6'
-	id 'org.cyclonedx.bom' version '1.10.0'
-	id 'org.sonarqube' version '5.1.0.4882'
+	id 'io.spring.dependency-management' version '1.1.7'
+	id 'org.cyclonedx.bom' version '2.2.0'
+	id 'org.sonarqube' version '6.1.0.5360'
 }
 
 group = '${{ values.groupId }}'
@@ -22,12 +22,11 @@ repositories {
 repositories {
 	mavenCentral()
 	maven { url 'https://repo.spring.io/milestone' }
-	maven { url 'https://repo.spring.io/snapshot' }
 }
 
 ext {
-	set('otelInstrumentationVersion', "2.9.0-alpha")
-	set('springAiVersion', "1.0.0-SNAPSHOT")
+	set('arconiaVersion', "0.7.0")
+	set('springAiVersion', "1.0.0-M6")
 }
 
 dependencies {
@@ -36,49 +35,34 @@ dependencies {
 
 	implementation 'org.springframework.ai:spring-ai-markdown-document-reader'
 
-	implementation 'io.micrometer:micrometer-tracing-bridge-otel'
-	implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
-	implementation 'io.micrometer:micrometer-registry-otlp'
-	implementation 'io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0'
+	implementation 'io.arconia:arconia-opentelemetry-spring-boot-starter'
 
 	{% if values.llmProvider == "mistral-ai" %}
 	implementation 'org.springframework.ai:spring-ai-mistral-ai-spring-boot-starter'
 	{%- endif %}
 	{% if values.llmProvider == "ollama" %}
 	implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
-	testImplementation 'org.testcontainers:ollama'
-	{%- endif %}
-	{% if values.llmProvider == "openai" %}
-	implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
-	{%- endif %}
-	{% if values.vectorStore == "chroma" %}
-	implementation 'org.springframework.ai:spring-ai-chroma-store-spring-boot-starter'
-	testImplementation 'org.testcontainers:chromadb'
+	testAndDevelopmentOnly 'io.arconia:arconia-dev-service-ollama'
 	{%- endif %}
 	{% if values.vectorStore == "postgresql" %}
 	implementation 'org.springframework.ai:spring-ai-pgvector-store-spring-boot-starter'
-	implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.5'
-	testImplementation 'org.testcontainers:postgresql'
-	{%- endif %}
-	{% if values.vectorStore == "weaviate" %}
-	implementation 'org.springframework.ai:spring-ai-weaviate-store-spring-boot-starter'
-	testImplementation 'org.testcontainers:weaviate'
+	implementation 'org.springframework:spring-jdbc'
+	implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:1.1.0'
+	testAndDevelopmentOnly 'io.arconia:arconia-dev-service-postgresql'
 	{%- endif %}
 	implementation "org.springframework.ai:spring-ai-spring-cloud-bindings"
 
 	testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testAndDevelopmentOnly 'io.arconia:arconia-dev-service-opentelemetry-lgtm'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
-	testImplementation 'org.springframework.ai:spring-ai-spring-boot-testcontainers'
 	testImplementation 'org.springframework:spring-webflux'
-	testImplementation 'org.testcontainers:grafana'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 dependencyManagement {
 	imports {
-		mavenBom "io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:${otelInstrumentationVersion}"
+		mavenBom "io.arconia:arconia-bom:${arconiaVersion}"
 		mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
 	}
 }

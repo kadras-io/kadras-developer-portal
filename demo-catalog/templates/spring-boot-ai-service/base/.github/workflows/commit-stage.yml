@@ -35,18 +35,18 @@ jobs:
       security-events: write
     steps:
       - name: Check out source code
-        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
       
       - name: Set up Java
-        uses: actions/setup-java@8df1039502a15bceb9433410b1a100fbe190c53b # v4.5.0
+        uses: actions/setup-java@3a4f6e1af504cf6a31855fa899c6aa5355ba6c12 # v4.7.0
         with:
           java-version: 23
           distribution: 'graalvm'
       
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@d156388eb19639ec20ade50009f3d199ce1e2808 # v4.1.0
+        uses: gradle/actions/setup-gradle@06832c7b30a0129d7fb559bcc6e43d26f6374244 # v4.3.1
 
       - name: Compile and test
         run: ./gradlew build sonar
@@ -69,7 +69,7 @@ jobs:
         run: ./gradlew bootBuildImage --imageName ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:${{ '${{ env.VERSION }}' }}
 
       - name: Authenticate with the container registry
-        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
         with:
           username: ${{ '${{ github.actor }}' }}
           password: ${{ '${{ secrets.GITHUB_TOKEN }}' }}
@@ -94,7 +94,7 @@ jobs:
       image-name: ${{ '${{ steps.image-info.outputs.name }}' }}
     steps:
       - name: Install Cosign
-        uses: sigstore/cosign-installer@dc72c7d5c4d10cd6bcb8cf6e3fd625a9e5e537da # v3.7.0
+        uses: sigstore/cosign-installer@d7d6bc7722e3daa8354c50bcb52f4837da5e9b6a # v3.8.1
 
       - uses: redhat-actions/podman-login@4934294ad0449894bcd1e9f191899d7292469603 # v1.7
         with:
@@ -124,7 +124,7 @@ jobs:
       actions: read
       id-token: write
       packages: write
-    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.0.0
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.1.0
     with:
       image: ${{ '${{ needs.sign.outputs.image-name }}' }}
       digest: ${{ '${{ needs.sign.outputs.image-digest }}' }}
