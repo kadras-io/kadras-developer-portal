@@ -29,7 +29,7 @@ spring:
         pull-model-strategy: when_missing
       chat:
         options:
-          model: phi4:latest
+          model: smollm2
           num-ctx: 4096
           temperature: 0.7
       embedding:
@@ -54,6 +54,9 @@ spring:
         include-query-response: true
       {%- if values.vectorStore == "postgresql" %}
       pgvector:
+        {%- if values.llmProvider == "mistralai" %}
+        dimensions: 1024
+        {%- endif %}
         {%- if values.llmProvider == "ollama" %}
         dimensions: 768
         {%- endif %}
@@ -66,3 +69,17 @@ management:
     web:
       exposure:
         include: "*"
+
+arconia:
+  dev:
+    services:
+      lgtm:
+        image-name: grafana/otel-lgtm:0.9.1
+      {%- if values.llmProvider == "ollama" %}
+      ollama:
+        image-name: ollama/ollama:0.6.3
+      {%- endif %}
+      {%- if values.vectorStore == "postgresql" %}
+      postgresql:
+        image-name: pgvector/pgvector:pg17
+      {%- endif %}

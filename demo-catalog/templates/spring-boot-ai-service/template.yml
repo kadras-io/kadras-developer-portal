@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: spring-ai-rag
-  title: Spring AI Service
-  description: Spring Boot using Java and Gradle with Spring AI integration to build LLM-powered applications with RAG and tools.
+  title: Spring AI RAG Service
+  description: Java application using Spring AI to integrate with LLMs, vector stores, and tools.
   annotations:
     backstage.io/time-saved: PT12H
   tags:
@@ -72,9 +72,9 @@ spec:
         groupId:
           title: Group
           type: string
-          description: Maven Group ID (e.g. io.kadras)
+          description: Maven Group ID (e.g. io.arconia)
           ui:autofocus: true
-          default: io.kadras
+          default: io.arconia
         artifactId:
           title: Artifact
           type: string
@@ -83,8 +83,8 @@ spec:
         basePackage:
           title: Base Package
           type: string
-          description: Base name for the Java package (e.g. io.kadras.demo)
-          default: io.kadras.demo
+          description: Base name for the Java package (e.g. io.arconia.demo)
+          default: io.arconia.demo
     
     - title: Application Dependencies
       required:
@@ -97,28 +97,24 @@ spec:
           ui:autofocus: true
           default: mistral-ai
           enum:
-            - anthropic
+            - hugging-face
             - mistral-ai
             - ollama
-            - openai
           enumNames:
-            - "Anthropic"
+            - "Hugging Face"
             - "Mistral AI"
             - "Ollama"
-            - "OpenAI"
         vectorStore:
           title: Vector Store
           type: string
           description: Choose the vector store to integrate with
           default: postgresql
           enum:
-            - chroma
             - postgresql
-            - weaviate
+            - sqlite
           enumNames:
-            - "ChromaDB"
             - "PostgreSQL"
-            - "Weaviate"
+            - "SQLite"
 
     - title: Deployment Information
       required:
@@ -170,6 +166,7 @@ spec:
         gitAuthorName: ${{ user.entity.spec.profile.displayName }}
         gitAuthorEmail: ${{ user.entity.spec.profile.email }}
         gitCommitMessage: "Initial commit"
+        protectEnforceAdmins: false
         repoVisibility: public
         requireBranchesToBeUpToDate: true
         requiredCommitSigning: true
@@ -181,6 +178,7 @@ spec:
           - ai
           - large-language-models
           - retrieval-augmented-generation
+          - rag
 
     - id: register
       name: Register Catalog Entity
