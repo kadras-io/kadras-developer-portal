@@ -43,8 +43,8 @@
     "@backstage/plugin-techdocs-backend": "backstage:^",
     "@roadiehq/scaffolder-backend-module-http-request": "^5.3.1",
     "app": "link:../app",
-    "better-sqlite3": "^9.6.0",
-    "node-gyp": "^10.3.1",
+    "better-sqlite3": "^11.9.1",
+    "node-gyp": "^11.1.0",
     "pg": "^8.14.1"
   },
   "devDependencies": {
