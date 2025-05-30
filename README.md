@@ -12,7 +12,7 @@ You can run the application on your local environment using `yarn`:
 
 ```shell
 yarn install
-yarn dev
+yarn start
 ```
 
 ## 🛡️&nbsp; Security
