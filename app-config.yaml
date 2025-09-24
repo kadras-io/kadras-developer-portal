@@ -124,10 +124,6 @@ catalog:
       rules:
         - allow: [Template, Location]
 
-  # Experimental: Always use the search method in UrlReaderProcessor.
-  # New adopters are encouraged to enable it as this behavior will be the default in a future release.
-  useUrlReadersSearch: true
-
 # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
 kubernetes:
   serviceLocatorMethod:

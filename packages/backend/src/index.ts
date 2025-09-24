@@ -33,6 +33,9 @@ backend.add(
 
 // scaffolder plugins
 backend.add(import('@backstage/plugin-scaffolder-backend-module-github'));
+backend.add(
+  import('@backstage/plugin-scaffolder-backend-module-notifications'),
+);
 
 // search plugin
 backend.add(import('@backstage/plugin-search-backend'));
@@ -47,6 +50,9 @@ backend.add(import('@backstage/plugin-search-backend-module-techdocs'));
 
 // kubernetes
 backend.add(import('@backstage/plugin-kubernetes-backend'));
+
+backend.add(import('@backstage/plugin-notifications-backend'));
+backend.add(import('@backstage/plugin-signals-backend'));
 
 // other plugins
 backend.add(import('@backstage-community/plugin-sonarqube-backend'));
