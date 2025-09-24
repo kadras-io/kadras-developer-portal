@@ -156,7 +156,7 @@ spec:
       action: publish:github
       input:
         repoUrl: ${{ parameters.repoUrl }}
-        allowedHosts: ['github.com']
+        #allowedHosts: ['github.com']
         allowRebaseMerge: false
         allowSquashMerge: false
         defaultBranch: ${{ parameters.repoBranch }}
@@ -195,17 +195,6 @@ spec:
         path: '/proxy/sonarqube/projects/create?name=${{ (parameters.repoUrl | parseRepoUrl).repo }}&organization=${{ (parameters.repoUrl | parseRepoUrl).owner }}&project=${{ (parameters.repoUrl | parseRepoUrl).owner }}_${{ (parameters.repoUrl | parseRepoUrl).repo }}'
         headers:
           content-type: 'application/json'
-    
-    - id: notify
-      name: Notify
-      action: notification:send
-      input:
-        recipients: entity
-        entityRefs:
-          - user:default/guest
-        title: 'Template executed'
-        info: 'Your template has been executed'
-        severity: 'normal'
 
   output:
     links:
